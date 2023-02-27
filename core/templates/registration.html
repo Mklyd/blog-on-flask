@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="form-floating" action="{{url_for('registration')}}" method="post"><br>
+    <input class="form-control" type="username" name="username" placeholder="Username"><br>
+    <input class="form-control" type="password" name="password" placeholder="password"><br>
+    <input class="form-control" type="confirm_password" name="confirm_password" placeholder="password"><br>
+    <button class="btn btn-outline-primary">Зарегистрироваться</button>
+</form>
+    
+{% endblock %}

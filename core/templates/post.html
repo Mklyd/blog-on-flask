@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <span>{{ post.author }}</span>
+    <h4>{{post.title}}</h4>
+    <p>{{post.body}}</p>
+    {%if current_user == post.author %}
+    <a class="btn btn-outline-danger" href="{{url_for('post_delete', id=post.id)}}">Удалить пост</a>
+    {% endif %}
+    <br>
+    <br>  
+
+    {% for comment in post.comments %}
+    <p>{{ comment.user }}: {{comment.message}}</p>
+    {% endfor %}
+
+    {%if current_user.is_authenticated %}
+        <form action="{{url_for('add_comment', post_id=post.id)}}" method="post">
+            <input type="text" name="message" id=""><br>
+            <button class="btn btn-outline-primary">Оставить комментарий</button>
+        </form>
+    {% endif %}
+    
+{% endblock %}
